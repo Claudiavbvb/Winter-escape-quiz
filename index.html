@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Winter Escape Match</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to bottom, #e0f7fa, #ffffff);
+      color: #003366;
+      padding: 2rem;
+      max-width: 800px;
+      margin: auto;
+    }
+    h1 {
+      text-align: center;
+      color: #004d66;
+      font-size: 2.5rem;
+      margin-bottom: 2rem;
+    }
+    .question {
+      background: #ffffffcc;
+      border-radius: 15px;
+      padding: 1rem;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+    .question h3 {
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+      color: #006680;
+    }
+    label {
+      display: block;
+      margin-bottom: 0.4rem;
+      padding: 0.5rem;
+      border-radius: 8px;
+      transition: background 0.3s;
+      cursor: pointer;
+    }
+    input[type="radio"] {
+      margin-right: 0.5rem;
+    }
+    label:hover {
+      background-color: #e0f0ff;
+    }
+    button {
+      display: block;
+      background-color: #008CBA;
+      color: white;
+      padding: 0.8rem 1.6rem;
+      font-size: 1.1rem;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      margin: 1.5rem auto 0;
+      transition: background-color 0.3s ease;
+    }
+    button:hover {
+      background-color: #005f73;
+    }
+    #result {
+      margin-top: 2rem;
+      padding: 1.5rem;
+      background: #ffffffdd;
+      border-left: 5px solid #008CBA;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      font-size: 1.1rem;
+    }
+  </style>
+</head>
+<body>
+  <h1>❄️ Find Your Family's Winter Escape ❄️</h1>
+  <form id="quizForm">
+    <div class="question">
+      <h3>1. What’s your family’s winter vibe?</h3>
+      <label><input type="radio" name="q1" value="Alpine Cocoon" required> A) Cozy nights, warm cocoa, and fuzzy socks</label>
+      <label><input type="radio" name="q1" value="Freestyle Fam Jam"> B) Hitting the park, catching air, and laughing loud</label>
+      <label><input type="radio" name="q1" value="Eco Explorer"> C) Hiking, learning, and leaving a light footprint</label>
+      <label><input type="radio" name="q1" value="Basecamp Booster"> D) Doing everything — skiing, climbing, snowshoeing!</label>
+    </div>
+
+    <div class="question">
+      <h3>2. Pick a dream family souvenir:</h3>
+      <label><input type="radio" name="q2" value="Freestyle Fam Jam" required> A) A GoPro highlight reel of your epic jumps</label>
+      <label><input type="radio" name="q2" value="Basecamp Booster"> B) A custom patch earned for your family adventure</label>
+      <label><input type="radio" name="q2" value="Alpine Cocoon"> C) A handcrafted Swiss chocolate bar you made yourselves</label>
+      <label><input type="radio" name="q2" value="Eco Explorer"> D) A photo of your family planting a tree or offsetting your travel</label>
+    </div>
+
+    <div class="question">
+      <h3>3. Who’s the “trip planner” in your family?</h3>
+      <label><input type="radio" name="q3" value="Eco Explorer" required> A) The eco-warrior — checking carbon impact and packing reusable cups</label>
+      <label><input type="radio" name="q3" value="Freestyle Fam Jam"> B) The hype crew — picking cool gear and dreaming of jumps</label>
+      <label><input type="radio" name="q3" value="Alpine Cocoon"> C) The comfort curator — spa time and beautiful meals, please</label>
+      <label><input type="radio" name="q3" value="Basecamp Booster"> D) The chaos conductor — organizing all the activities and none of the chill</label>
+    </div>
+
+    <div class="question">
+      <h3>4. What’s your family’s go-to group activity?</h3>
+      <label><input type="radio" name="q4" value="Alpine Cocoon" required> A) Building blanket forts or movie night</label>
+      <label><input type="radio" name="q4" value="Eco Explorer"> B) Exploring trails, parks, or learning about animals</label>
+      <label><input type="radio" name="q4" value="Basecamp Booster"> C) Climbing walls, trampolines, or running wild at the park</label>
+      <label><input type="radio" name="q4" value="Freestyle Fam Jam"> D) Filming family skits or action clips</label>
+    </div>
+
+    <div class="question">
+      <h3>5. What would your family most likely say on day 2 of vacation?</h3>
+      <label><input type="radio" name="q5" value="Alpine Cocoon" required> A) “Let’s hit the spa, then fondue.”</label>
+      <label><input type="radio" name="q5" value="Freestyle Fam Jam"> B) “Can we do the jump again?!”</label>
+      <label><input type="radio" name="q5" value="Eco Explorer"> C) “Look! A pine marten footprint!”</label>
+      <label><input type="radio" name="q5" value="Basecamp Booster"> D) “Can we try something new today?”</label>
+    </div>
+
+    <button type="submit">Show my winter escape match</button>
+  </form>
+
+  <div id="result"></div>
+
+  <script>
+    const packages = {
+      "Alpine Cocoon": "<strong>🔥 The Alpine Cocoon</strong><br>Cozy luxury meets snowy serenity. 3-night retreat with spa time, sleigh rides, chocolate-making, and fondue. Tranquil Peaks Place in LAAX.",
+      "Freestyle Fam Jam": "<strong>🏊 The Freestyle Fam Jam</strong><br>Park-side thrills and family fun! 3-night stay at Riders Hotel with freestyle coaching, GoPro sessions, snow tubing, and high-energy vibes.",
+      "Eco Explorer": "<strong>🌱 The Eco Explorer</strong><br>Sustainable alpine adventure. Stay at rocksresort with guided hikes, eco-lessons, and organic meals. Nature-loving and planet-friendly.",
+      "Basecamp Booster": "<strong>🧷 The Basecamp Booster</strong><br>Action-packed escape at Wellness Hostel 3000. Ski, snowshoe, climb, and join mini-Olympics. Nonstop fun and bonding!"
+    };
+
+    document.getElementById("quizForm").addEventListener("submit", function(event) {
+      event.preventDefault();
+      const formData = new FormData(this);
+      const scores = {};
+
+      for (let value of formData.values()) {
+        scores[value] = (scores[value] || 0) + 1;
+      }
+
+      const match = Object.entries(scores).sort((a, b) => b[1] - a[1])[0][0];
+      document.getElementById("result").innerHTML = packages[match];
+    });
+  </script>
+</body>
+</html>
